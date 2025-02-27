@@ -20,7 +20,6 @@ import big_vision.evaluators.common as c
 import big_vision.pp.tokenizer
 import big_vision.utils as u
 
-
 # Temporary global flag to facilitate backwards compatability. Will be removed
 # by the end of year 2023.
 API = "jit"

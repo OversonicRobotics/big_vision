@@ -14,9 +14,9 @@
 
 """Preprocessing builder."""
 
+import tensorflow as tf
 from absl import logging
 from big_vision.pp import registry
-import tensorflow as tf
 
 
 def get_preprocess_fn(pp_pipeline, log_data=True, log_steps=False):

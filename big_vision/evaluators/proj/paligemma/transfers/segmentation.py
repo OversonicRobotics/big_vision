@@ -16,6 +16,7 @@
 
 import functools
 
+import PIL.Image
 import big_vision.evaluators.common as c
 import big_vision.pp.tokenizer
 import big_vision.utils as u
@@ -23,10 +24,7 @@ import flax.linen as nn
 import jax
 import jax.numpy as jnp
 import numpy as np
-import PIL.Image
-
 from tensorflow.io import gfile
-
 
 # Temporary global flag to facilitate backwards compatability. Will be removed
 # by the end of year 2023.
@@ -241,7 +239,6 @@ class Decoder(nn.Module):
     return x
 
 
-@functools.cache
 def get_reconstruct_masks(model):
   """Reconstructs masks from codebook indices.
 
