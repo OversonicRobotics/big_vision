@@ -15,19 +15,25 @@
 """Evaluator for caption generation metrics used for the MS COCO dataset."""
 import collections
 import functools
+import os
+import tempfile
 
 import big_vision.evaluators.common as c
 import big_vision.input_pipeline
 import big_vision.pp.builder
 import big_vision.pp.tokenizer
 import big_vision.utils as u
-import jax
+
 from pycocoevalcap.bleu import bleu
 from pycocoevalcap.cider import cider
 from pycocoevalcap.meteor import meteor
 from pycocoevalcap.rouge import rouge
 from pycocoevalcap.spice import spice
 from pycocoevalcap.tokenizer import ptbtokenizer
+
+import jax
+
+from tensorflow.io import gfile
 
 # Temporary global flag to facilitate backwards compatability. Will be removed
 # by the end of year 2023.

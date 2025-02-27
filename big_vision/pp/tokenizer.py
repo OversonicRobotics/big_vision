@@ -13,13 +13,14 @@
 # limitations under the License.
 
 """The tokenizer API for big_vision, and central registration place."""
+import functools
 import importlib
 from typing import Protocol
 
-import big_vision.utils as u
-import numpy as np
 from absl import logging
 from big_vision.pp import registry
+import big_vision.utils as u
+import numpy as np
 
 
 class Tokenizer(Protocol):
@@ -73,6 +74,7 @@ class Tokenizer(Protocol):
     """Returns the size of the vocabulary."""
 
 
+@functools.cache
 def get_tokenizer(name):
   with u.chrono.log_timing(f"z/secs/tokenizer/{name}"):
     if not registry.Registry.knows(f"tokenizers.{name}"):
